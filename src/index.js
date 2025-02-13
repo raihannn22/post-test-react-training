@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Category from './pages/Category';
-import TodoPage from './pages/ToDo';
+import 'primereact/resources/themes/lara-light-blue/theme.css';  
+import 'primereact/resources/primereact.min.css';  
+import 'primeicons/primeicons.css';  
+import App from './App';
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <TodoPage />
+    <App/>
   </React.StrictMode>
 );
 
