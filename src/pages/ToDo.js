@@ -49,7 +49,7 @@ const TodoPage = () => {
     <div className="p-5">
       <h2 className="mb-5 text-center font-bold">Manajemen To-Do</h2>
       <div className="grid p-fluid gap-3">
-        {/* Deskripsi */}
+        
         <div className="col-12 md:col-4">
           <label htmlFor="description" className="block font-bold mb-2">
             Deskripsi
@@ -65,7 +65,7 @@ const TodoPage = () => {
           />
         </div>
 
-        {/* Tanggal */}
+
         <div className="col-12 md:col-4">
           <label htmlFor="date" className="block font-bold mb-2">
             Tanggal
@@ -92,7 +92,6 @@ const TodoPage = () => {
           />
         </div>
 
-        {/* Kategori */}
         <div className="col-12 md:col-4">
           <label htmlFor="category" className="block font-bold mb-2">
             Kategori
@@ -110,7 +109,6 @@ const TodoPage = () => {
           />
         </div>
 
-        {/* Tombol Tambah */}
         <div className="col-12 flex justify-content-start">
           <Button
             label="Tambah"

@@ -48,7 +48,7 @@ const Dashboard = () => {
     setCategorizedTodos(categorized);
   }, [todos]);
 
-  // Komponen untuk menampilkan kategori tugas
+ 
   const renderTaskCard = (title, tasks, bgColor) => (
     <div className="col-12 md:col-3">
       <Card title={title} className={`shadow-3 p-3 ${bgColor} text-white`}>
