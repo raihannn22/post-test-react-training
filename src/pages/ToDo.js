@@ -6,7 +6,6 @@ import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 import { Calendar } from "primereact/calendar";
 import Table from "../component/Table.";
-import { FloatLabel } from "primereact/floatlabel";
 
 const TodoPage = () => {
   const { categories } = categoriesStore();
