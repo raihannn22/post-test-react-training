@@ -5,7 +5,5 @@
 
 [build]
   command = "npm run build"
-  publish = "dist"
-
-[context.production]
-  NODE_VERSION = "20"
+  publish = "build"
+  environment = { NODE_VERSION = "20" }
