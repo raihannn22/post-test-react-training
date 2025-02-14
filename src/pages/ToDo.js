@@ -64,6 +64,7 @@ const TodoPage = () => {
           dateFormat="dd/mm/yy"
           showIcon
         />
+        
 
         {/* <input
           type="date"
@@ -79,6 +80,11 @@ const TodoPage = () => {
           placeholder="Select Category"
           className="w-full md:w-14rem"
         />
+        <Button onClick={handleAddTodo}>Tambah</Button>
+      </div>
+
+      <Table columns={columns} data={categoryData} />
+  
         {/* <select
           value={newTodo.category}
           onChange={(e) => setNewTodo({ ...newTodo, category: e.target.value })}
@@ -90,11 +96,6 @@ const TodoPage = () => {
             </option>
           ))}
         </select> */}
-        <Button onClick={handleAddTodo}>Tambah</Button>
-      </div>
-
-      <Table columns={columns} data={categoryData} />
-  
       {/* <table>
         <thead>
           <tr>
