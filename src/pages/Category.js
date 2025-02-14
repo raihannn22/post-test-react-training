@@ -58,23 +58,3 @@ const Category = () => {
 
 export default Category;
 
-{
-  /* <table>
-  <thead>
-    <tr>
-      <th>Kategori</th>
-      <th>Aksi</th>
-    </tr>
-  </thead>
-  <tbody>
-    {categories.map((category, index) => (
-      <tr key={index}>
-        <td>{category}</td>
-        <td>
-          <button onClick={() => removeCategory(category)}>Hapus</button>
-        </td>
-      </tr>
-    ))}
-  </tbody>
-</table> */
-}

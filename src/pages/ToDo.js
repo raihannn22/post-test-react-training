@@ -6,6 +6,7 @@ import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 import { Calendar } from "primereact/calendar";
 import Table from "../component/Table.";
+import { FloatLabel } from "primereact/floatlabel";
 
 const TodoPage = () => {
   const { categories } = categoriesStore();
@@ -39,7 +40,7 @@ const TodoPage = () => {
           label="Hapus"
           icon="pi pi-trash"
           className="p-button-danger"
-          onClick={() => deleteTodo(rowData.id)}
+          onClick={() => deleteTodo(rowData.todo.id)}
         />
       ),
     },
@@ -48,76 +49,79 @@ const TodoPage = () => {
   return (
     <div className="p-5">
       <h2 className="mb-5 text-center font-bold">Manajemen To-Do</h2>
-      <div>
-        <InputText
-          type="text"
-          value={newTodo.description}
-          onChange={(e) =>
-            setNewTodo({ ...newTodo, description: e.target.value })
-          }
-          placeholder="Deskripsi"
-        />
+      <div className="grid p-fluid gap-3">
+        {/* Deskripsi */}
+        <div className="col-12 md:col-4">
+          <label htmlFor="description" className="block font-bold mb-2">
+            Deskripsi
+          </label>
+          <InputText
+            id="description"
+            type="text"
+            value={newTodo.description}
+            onChange={(e) =>
+              setNewTodo({ ...newTodo, description: e.target.value })
+            }
+            placeholder="Deskripsi"
+          />
+        </div>
 
-        <Calendar
-          value={newTodo.date}
-          onChange={(e) => setNewTodo({ ...newTodo, date: e.target.value })}
-          dateFormat="dd/mm/yy"
-          showIcon
-        />
-        
+        {/* Tanggal */}
+        <div className="col-12 md:col-4">
+          <label htmlFor="date" className="block font-bold mb-2">
+            Tanggal
+          </label>
+          <Calendar
+            id="date"
+            value={newTodo.date ? new Date(newTodo.date) : null}
+            onChange={(e) => {
+              if (e.value) {
+                const formattedDate = `${e.value.getFullYear()}-${String(
+                  e.value.getMonth() + 1
+                ).padStart(2, "0")}-${String(e.value.getDate()).padStart(
+                  2,
+                  "0"
+                )}`;
+                setNewTodo({ ...newTodo, date: formattedDate });
+              } else {
+                setNewTodo({ ...newTodo, date: "" });
+              }
+            }}
+            placeholder="Tanggal"
+            dateFormat="dd/mm/yy"
+            showIcon
+          />
+        </div>
 
-        {/* <input
-          type="date"
-          value={newTodo.date}
-          onChange={(e) => setNewTodo({ ...newTodo, date: e.target.value })}
-        /> */}
+        {/* Kategori */}
+        <div className="col-12 md:col-4">
+          <label htmlFor="category" className="block font-bold mb-2">
+            Kategori
+          </label>
+          <Dropdown
+            id="category"
+            value={newTodo.category}
+            onChange={(e) => setNewTodo({ ...newTodo, category: e.value })}
+            options={categories.map((category) => ({
+              label: category,
+              value: category,
+            }))}
+            placeholder="Pilih Kategori"
+            className="w-full"
+          />
+        </div>
 
-        <Dropdown
-          value={newTodo.category}
-          onChange={(e) => setNewTodo({ ...newTodo, category: e.target.value })}
-          options={categories}
-          optionLabel="name"
-          placeholder="Select Category"
-          className="w-full md:w-14rem"
-        />
-        <Button onClick={handleAddTodo}>Tambah</Button>
+        {/* Tombol Tambah */}
+        <div className="col-12 flex justify-content-start">
+          <Button
+            label="Tambah"
+            onClick={handleAddTodo}
+            className="p-button-primary max-w-14rem"
+          />
+        </div>
       </div>
 
       <Table columns={columns} data={categoryData} />
-  
-        {/* <select
-          value={newTodo.category}
-          onChange={(e) => setNewTodo({ ...newTodo, category: e.target.value })}
-        >
-          <option value="">Pilih Kategori</option>
-          {categories.map((category, index) => (
-            <option key={index} value={category}>
-              {category}
-            </option>
-          ))}
-        </select> */}
-      {/* <table>
-        <thead>
-          <tr>
-            <th>Deskripsi</th>
-            <th>Tanggal</th>
-            <th>Kategori</th>
-            <th>Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          {todos.map((todo, index) => (
-            <tr key={index}>
-              <td>{todo.description}</td>
-              <td>{todo.date}</td>
-              <td>{todo.category}</td>
-              <td>
-                <button onClick={() => deleteTodo(todo.id)}>Hapus</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
     </div>
   );
 };
