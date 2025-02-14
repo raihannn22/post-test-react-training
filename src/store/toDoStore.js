@@ -10,15 +10,7 @@ const toDoStore = create((set) => ({
         return { todos: updatedTodos };
       }),
 
-    updateTodo: (id, updatedTodo) =>
-      set((state) => {
-        const updatedTodos = state.todos.map((todo) =>
-          todo.id === id ? { ...todo, ...updatedTodo } : todo
-        );
-        localStorage.setItem('todos', JSON.stringify(updatedTodos));
-        return { todos: updatedTodos };
-      }),
-      
+
     deleteTodo: (id) =>
       set((state) => {
         const updatedTodos = state.todos.filter((todo) => todo.id !== id);
